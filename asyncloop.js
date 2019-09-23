@@ -1,20 +1,16 @@
-function longFunc(i){
+function longFunc(i,settimepara){
     return new Promise(function(resolve,reject){
-        console.log("function " + i + " is running")
-        console.log("function " + i + " still running")
         setTimeout(function(){
             console.log("i is "+i+ " in console")
             let result = "i is "+ i
             resolve(result)
-        }, 4000)
-        console.log("function " + i + " is running for long now")
-        console.log("please make function " + i + " stop the execution")
+        }, settimepara)
     })
 }
 
 async function awaitres(){
     for(let j=0;j<5;j++){
-        await longFunc(j)
+        await longFunc(j,(5-j)*2000)
     }
 
     console.log("awaitres is running")
